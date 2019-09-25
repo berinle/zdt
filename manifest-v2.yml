@@ -1,0 +1,9 @@
+---
+applications:
+- name: zdt-v2
+  path: deploys/zdt-0.0.2.jar
+  memory: 1G
+  buildpacks:
+  - java_buildpack
+  routes:
+    - route: zdt-aae-v2.cfapps.io
