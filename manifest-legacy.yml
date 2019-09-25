@@ -1,0 +1,8 @@
+---
+applications:
+- name: zdt
+  path: build/libs/zdt-0.0.1.jar
+  memory: 1G
+  buildpack: java_buildpack
+  routes:
+    - route: zdt-aae.cfapps.io
