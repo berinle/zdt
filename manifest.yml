@@ -4,6 +4,8 @@ applications:
   path: build/libs/zdt-0.0.1.jar
   memory: 1G
   buildpacks:
-  - java_buildpack
+  - ((java_buildpack))
   routes:
-    - route: zdt-aae.cfapps.io
+    - route: zdt-aae.((apps_domain))
+  env:
+    JBP_CONFIG_DEBUG: '{enabled: true}'

@@ -8,6 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.time.LocalTime;
+
 @SpringBootApplication
 public class ZdtApplication {
 
@@ -21,11 +25,16 @@ public class ZdtApplication {
 	class SampleController {
 		@GetMapping("/greet")
 		public ResponseEntity<String> greet() {
+		public ResponseEntity<String> greet() throws UnknownHostException {
 			LOG.debug("this is a DEBUG statement");
 			LOG.info("this is an INFO statement");
 			LOG.error("this is an ERROR statement");
 
 			return ResponseEntity.ok("hello world");
+			LOG.info("IP Address: {}, Thread: {}, Time: {}",
+					InetAddress.getLocalHost(),
+					Thread.currentThread().getName(),
+					LocalTime.now());
 		}
 	}
 
