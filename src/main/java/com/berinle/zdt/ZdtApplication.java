@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.InetAddress;
@@ -24,13 +25,21 @@ public class ZdtApplication {
 	@RestController
 	class SampleController {
 		@GetMapping("/greet")
-		public ResponseEntity<String> greet() {
 		public ResponseEntity<String> greet() throws UnknownHostException {
 			LOG.debug("this is a DEBUG statement");
 			LOG.info("this is an INFO statement");
 			LOG.error("this is an ERROR statement");
 
+			LOG.info("IP Address: {}, Thread: {}, Time: {}",
+					InetAddress.getLocalHost(),
+					Thread.currentThread().getName(),
+					LocalTime.now());
+
 			return ResponseEntity.ok("hello world");
+		}
+
+		@PostMapping("/greet")
+		public void dummyPost() throws UnknownHostException {
 			LOG.info("IP Address: {}, Thread: {}, Time: {}",
 					InetAddress.getLocalHost(),
 					Thread.currentThread().getName(),
