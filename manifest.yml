@@ -7,5 +7,7 @@ applications:
   - ((java_buildpack))
   routes:
     - route: zdt-aae.((apps_domain))
+  services:
+    - ((rabbitmq))
   env:
     JBP_CONFIG_DEBUG: '{enabled: true}'
